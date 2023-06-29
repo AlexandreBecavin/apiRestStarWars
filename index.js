@@ -8,9 +8,10 @@ import { starships } from './route/starship.js';
 import { transports } from './route/transport.js';
 import { vehicles } from './route/vehicle.js';
 import { auth } from './route/auth.js';
-import { users } from './route/user.js';
+import cors from 'cors';
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 mongoose
@@ -25,7 +26,6 @@ app.use('/species', species);
 app.use('/starships', starships);
 app.use('/transports', transports);
 app.use('/vehicles', vehicles);
-app.use('/users', users);
 app.use('/auth', auth);
 
 
