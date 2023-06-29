@@ -1,10 +1,11 @@
 import express from 'express';
 import Films from '../model/Films.js';
+import authenticateToken from '../middleware/authMiddleware.js';
 
 var films = express.Router();
 
 films.route('/')
-    .get(async (req, res) => {
+    .get(authenticateToken, async (req, res) => {
         try {
             const films = await Films.find();
             const halFilms = films.map((film) => film.toHAL());
@@ -13,7 +14,7 @@ films.route('/')
             return res.status(500).json({ error: "Internal server error" });
         }
     })
-    .post(async (req, res) => {
+    .post(authenticateToken, async (req, res) => {
         try {
             const film = new Films({
                 fields: { ...req.body },
@@ -28,7 +29,7 @@ films.route('/')
     });
 
 films.route('/:id')
-    .put(async (req, res) => {
+    .put(authenticateToken, async (req, res) => {
         try {
             const updatedFields = { ...req.body };
             const updatedFilm = await Films.findOneAndUpdate({ pk: req.params.id }, { fields: updatedFields });
@@ -42,7 +43,7 @@ films.route('/:id')
             return res.status(500).json({ error: "Internal server error" });
         }
     })
-    .delete(async function(req, res) {
+    .delete(authenticateToken, async function(req, res) {
             try {
             const deletedFilm = await Films.deleteOne({ pk: req.params.id });
 
@@ -55,7 +56,7 @@ films.route('/:id')
             return res.status(500).json({ error: "Internal server error" });
         }
     })
-    .get(async (req, res) => {
+    .get(authenticateToken, async (req, res) => {
             try {
             const film = await Films.findOne({ pk: req.params.id });
 

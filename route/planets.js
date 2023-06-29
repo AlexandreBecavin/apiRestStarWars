@@ -1,10 +1,11 @@
 import express from 'express';
 import Planet from '../model/Planet.js';
+import authenticateToken from '../middleware/authMiddleware.js';
 
 var planets = express.Router();
 
 planets.route('/')
-    .get(async (req, res) => {
+    .get(authenticateToken, async (req, res) => {
         try {
             const allPlanets = await Planet.find();
             const halPlanets = allPlanets.map((planet) => planet.toHAL());
@@ -13,7 +14,7 @@ planets.route('/')
             return res.status(500).json({ error: "Internal server error" });
         }
     })
-    .post(async (req, res) => {
+    .post(authenticateToken, async (req, res) => {
         try {
             const newPlanet = new Planet({
                 fields: { ...req.body },
@@ -28,7 +29,7 @@ planets.route('/')
     });
 
 planets.route('/:id')
-    .put(async (req, res) => {
+    .put(authenticateToken, async (req, res) => {
         try {
             const updatedFields = { ...req.body };
             const updatedPlanet = await Planet.findOneAndUpdate({ pk: req.params.id }, { fields: updatedFields });
@@ -42,7 +43,7 @@ planets.route('/:id')
             return res.status(500).json({ error: "Internal server error" });
         }
     })
-    .delete(async function(req, res) {
+    .delete(authenticateToken, async function(req, res) {
         try {
             const deletedPlanet = await Planet.deleteOne({ pk: req.params.id });
 
@@ -55,7 +56,7 @@ planets.route('/:id')
             return res.status(500).json({ error: "Internal server error" });
         }
     })
-    .get(async (req, res) => {
+    .get(authenticateToken, async (req, res) => {
         try {
             const planet = await Planet.findOne({ pk: req.params.id });
 

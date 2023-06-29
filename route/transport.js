@@ -1,10 +1,11 @@
 import express from 'express';
 import Transport from '../model/Transport.js';
+import authenticateToken from '../middleware/authMiddleware.js';
 
 var transports = express.Router();
 
 transports.route('/')
-    .get(async (req, res) => {
+    .get(authenticateToken, async (req, res) => {
         try {
             const transports = await Transport.find();
             const halTransports = transports.map((transport) => transport.toHAL());
@@ -13,9 +14,13 @@ transports.route('/')
             return res.status(500).json({ error: "Internal server error" });
         }
     })
-    .post(async (req, res) => {
+    .post(authenticateToken, async (req, res) => {
         try {
-            const transport = new Transport({ ...req.body });
+            const transport = new Transport({
+                fields: { ...req.body },
+                model: 'resources.transport',
+                pk: (new Date()).getTime(),
+            });
             const insertedTransport = await transport.save();
             return res.status(200).json(insertedTransport);
         } catch (error) {
@@ -24,7 +29,7 @@ transports.route('/')
     });
 
 transports.route('/:id')
-    .put(async (req, res) => {
+    .put(authenticateToken, async (req, res) => {
         try {
             const updatedFields = { ...req.body };
             const updatedTransport = await Transport.findOneAndUpdate({ pk: req.params.id }, { fields: updatedFields });
@@ -38,7 +43,7 @@ transports.route('/:id')
             return res.status(500).json({ error: "Internal server error" });
         }
     })
-    .delete(async function(req, res) {
+    .delete(authenticateToken, async function(req, res) {
         try {
             const deletedTransport = await Transport.deleteOne({ pk: req.params.id });
 
@@ -51,7 +56,7 @@ transports.route('/:id')
             return res.status(500).json({ error: "Internal server error" });
         }
     })
-    .get(async (req, res) => {
+    .get(authenticateToken, async (req, res) => {
         try {
             const transport = await Transport.findOne({ pk: req.params.id });
 

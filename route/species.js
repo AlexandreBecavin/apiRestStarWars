@@ -1,10 +1,11 @@
 import express from 'express';
 import Species from '../model/Species.js';
+import authenticateToken from '../middleware/authMiddleware.js';
 
 var species = express.Router();
 
 species.route('/')
-    .get(async (req, res) => {
+    .get(authenticateToken, async (req, res) => {
         try {
             const species = await Species.find();
             const halSpecies = species.map((specie) => specie.toHAL());
@@ -13,7 +14,7 @@ species.route('/')
             return res.status(500).json({ error: "Internal server error" });
         }
     })
-    .post(async (req, res) => {
+    .post(authenticateToken, async (req, res) => {
         try {
             const specie = new Species({
                 fields: { ...req.body },
@@ -28,7 +29,7 @@ species.route('/')
     });
 
 species.route('/:id')
-    .put(async (req, res) => {
+    .put(authenticateToken, async (req, res) => {
         try {
             const updatedFields = { ...req.body };
             const updatedSpecie = await Species.findOneAndUpdate({ pk: req.params.id }, { fields: updatedFields });
@@ -42,7 +43,7 @@ species.route('/:id')
             return res.status(500).json({ error: "Internal server error" });
         }
     })
-    .delete(async function(req, res) {
+    .delete(authenticateToken, async function(req, res) {
         try {
             const deletedSpecie = await Species.deleteOne({ pk: req.params.id });
 
@@ -55,7 +56,7 @@ species.route('/:id')
             return res.status(500).json({ error: "Internal server error" });
         }
     })
-    .get(async (req, res) => {
+    .get(authenticateToken, async (req, res) => {
         try {
             const specie = await Species.findOne({ pk: req.params.id });
 

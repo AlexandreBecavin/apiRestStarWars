@@ -1,10 +1,11 @@
 import express from 'express';
 import Vehicle from '../model/Vehicle.js';
+import authenticateToken from '../middleware/authMiddleware.js';
 
 var vehicles = express.Router();
 
 vehicles.route('/')
-    .get(async (req, res) => {
+    .get(authenticateToken, async (req, res) => {
         try {
             const vehicles = await Vehicle.find();
             const halVehicles = vehicles.map((vehicle) => vehicle.toHAL());
@@ -13,9 +14,13 @@ vehicles.route('/')
             return res.status(500).json({ error: "Internal server error" });
         }
     })
-    .post(async (req, res) => {
+    .post(authenticateToken, async (req, res) => {
         try {
-            const vehicle = new Vehicle({ ...req.body });
+            const vehicle = new Vehicle({
+                fields: { ...req.body },
+                model: 'resources.vehicle',
+                pk: (new Date()).getTime(),
+            });
             const insertedVehicle = await vehicle.save();
             return res.status(200).json(insertedVehicle);
         } catch (error) {
@@ -24,7 +29,7 @@ vehicles.route('/')
     });
 
 vehicles.route('/:id')
-    .put(async (req, res) => {
+    .put(authenticateToken, async (req, res) => {
         try {
             const updatedFields = { ...req.body };
             const updatedVehicle = await Vehicle.findOneAndUpdate({ id: req.params.id }, { fields: updatedFields });
@@ -38,7 +43,7 @@ vehicles.route('/:id')
             return res.status(500).json({ error: "Internal server error" });
         }
     })
-    .delete(async function(req, res) {
+    .delete(authenticateToken, async function(req, res) {
         try {
             const deletedVehicle = await Vehicle.deleteOne({ id: req.params.id });
 
@@ -51,7 +56,7 @@ vehicles.route('/:id')
             return res.status(500).json({ error: "Internal server error" });
         }
     })
-    .get(async (req, res) => {
+    .get(authenticateToken, async (req, res) => {
         try {
             const vehicle = await Vehicle.findOne({ id: req.params.id });
 
