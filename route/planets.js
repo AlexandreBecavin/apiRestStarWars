@@ -22,7 +22,7 @@ planets.route('/')
                 pk: (new Date()).getTime(),
             });
             const insertedPlanet = await newPlanet.save();
-            return res.status(200).json(insertedPlanet);
+            return res.status(201).json(insertedPlanet);
         } catch (error) {
             return res.status(500).json({ error: "Internal server error" });
         }

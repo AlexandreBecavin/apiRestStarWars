@@ -22,7 +22,7 @@ transports.route('/')
                 pk: (new Date()).getTime(),
             });
             const insertedTransport = await transport.save();
-            return res.status(200).json(insertedTransport);
+            return res.status(201).json(insertedTransport);
         } catch (error) {
             return res.status(500).json({ error: "Internal server error" });
         }

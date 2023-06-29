@@ -22,7 +22,7 @@ species.route('/')
                 pk: (new Date()).getTime(),
             });
             const insertedSpecie = await specie.save();
-            return res.status(200).json(insertedSpecie);
+            return res.status(201).json(insertedSpecie);
         } catch (error) {
             return res.status(500).json({ error: "Internal server error" });
         }

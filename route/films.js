@@ -22,7 +22,7 @@ films.route('/')
                 pk: (new Date()).getTime(),
             });
             const insertedFilm = await film.save();
-            return res.status(200).json(insertedFilm);
+            return res.status(201).json(insertedFilm);
         } catch (error) {
             return res.status(500).json({ error: "Internal server error" });
         }

@@ -22,7 +22,7 @@ starships.route('/')
                 pk: (new Date()).getTime(),
             });
             const insertedStarship = await starship.save();
-            return res.status(200).json(starship);
+            return res.status(201).json(starship);
         } catch (error) {
             return res.status(500).json({ error: "Internal server error" });
         }

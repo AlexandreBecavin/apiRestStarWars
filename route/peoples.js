@@ -22,7 +22,7 @@ peoples.route('/')
                 pk: (new Date()).getTime(),
             });
             const insertedPeople = await newPeople.save();
-            return res.status(200).json(insertedPeople);
+            return res.status(201).json(insertedPeople);
         } catch (error) {
             return res.status(500).json({ error: "Internal server error" });
         }
