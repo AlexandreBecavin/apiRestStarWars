@@ -1,0 +1,1891 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Star Wars Films API",
+      "version": "1.0.0",
+      "description": "API for managing Star Wars films"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000/"
+      }
+    ],
+    "tags": [
+      {
+        "name": "films",
+        "description": "Everything about your Films"
+      },
+      {
+        "name": "peoples",
+        "description": "Access to People orders"
+      },
+      {
+        "name": "planets",
+        "description": "Access to planets orders"
+      },
+      {
+        "name": "species",
+        "description": "Access to species orders"
+      },
+      {
+        "name": "starships",
+        "description": "Access to starships orders"
+      },
+      {
+        "name": "transports",
+        "description": "Access to transports orders"
+      },
+      {
+        "name": "users",
+        "description": "Access to users orders"
+      },
+      {
+        "name": "vehicles",
+        "description": "Access to vehicles orders"
+      }
+    ],
+    "paths": {
+      "/films": {
+        "get": {
+          "tags": [
+            "films"
+          ],
+          "summary": "Get all films",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Film"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "films"
+          ],
+          "summary": "Create a new film",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FilmInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Film"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/films/{id}": {
+        "get": {
+          "tags": [
+            "films"
+          ],
+          "summary": "Get a film by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Film"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "films"
+          ],
+          "summary": "Update a film by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FilmInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Film"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "films"
+          ],
+          "summary": "Delete a film by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Successful response"
+            }
+          }
+        }
+      },
+      "/people": {
+        "get": {
+          "tags": [
+            "peoples"
+          ],
+          "summary": "Get all people",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/People"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "peoples"
+          ],
+          "summary": "Create a new person",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PeopleInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/People"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/people/{id}": {
+        "get": {
+          "tags": [
+            "peoples"
+          ],
+          "summary": "Get a person by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/People"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "peoples"
+          ],
+          "summary": "Update a person by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PeopleInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/People"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "peoples"
+          ],
+          "summary": "Delete a person by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Successful response"
+            }
+          }
+        }
+      },
+      "/planets": {
+        "get": {
+          "tags": [
+            "planets"
+          ],
+          "summary": "Get all planets",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Planet"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "planets"
+          ],
+          "summary": "Create a new planet",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlanetInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Planet"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/planets/{id}": {
+        "get": {
+          "tags": [
+            "planets"
+          ],
+          "summary": "Get a planet by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Planet"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "planets"
+          ],
+          "summary": "Update a planet by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlanetInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Planet"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "planets"
+          ],
+          "summary": "Delete a planet by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Successful response"
+            }
+          }
+        }
+      },
+      "/species": {
+        "get": {
+          "tags": [
+            "species"
+          ],
+          "summary": "Get all species",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Species"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "species"
+          ],
+          "summary": "Create a new species",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpeciesInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Species"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/species/{id}": {
+        "get": {
+          "tags": [
+            "species"
+          ],
+          "summary": "Get a species by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Species"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "species"
+          ],
+          "summary": "Update a species by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpeciesInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Species"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "species"
+          ],
+          "summary": "Delete a species by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Successful response"
+            }
+          }
+        }
+      },
+      "/starships": {
+        "get": {
+          "tags": [
+            "starships"
+          ],
+          "summary": "Get all starships",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Starship"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "starships"
+          ],
+          "summary": "Create a new starship",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StarshipInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Starship"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/starships/{id}": {
+        "get": {
+          "tags": [
+            "starships"
+          ],
+          "summary": "Get a starship by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Starship"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "starships"
+          ],
+          "summary": "Update a starship by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StarshipInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Starship"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "starships"
+          ],
+          "summary": "Delete a starship by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Successful response"
+            }
+          }
+        }
+      },
+      "/transports": {
+        "get": {
+          "tags": [
+            "transports"
+          ],
+          "summary": "Get all transports",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Transport"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "transports"
+          ],
+          "summary": "Create a new transport",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransportInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Transport"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/transports/{id}": {
+        "get": {
+          "tags": [
+            "transports"
+          ],
+          "summary": "Get a transport by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Transport"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "transports"
+          ],
+          "summary": "Update a transport by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransportInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Transport"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "transports"
+          ],
+          "summary": "Delete a transport by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Successful response"
+            }
+          }
+        }
+      },
+      "/vehicles": {
+        "get": {
+          "tags": [
+            "vehicles"
+          ],
+          "summary": "Get all vehicles",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Vehicle"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "vehicles"
+          ],
+          "summary": "Create a new vehicle",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Vehicle"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/vehicles/{id}": {
+        "get": {
+          "tags": [
+            "vehicles"
+          ],
+          "summary": "Get a vehicle by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Vehicle"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "vehicles"
+          ],
+          "summary": "Update a vehicle by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Vehicle"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "vehicles"
+          ],
+          "summary": "Delete a vehicle by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Successful response"
+            }
+          }
+        }
+      },
+      "/users": {
+        "post": {
+          "tags": [
+            "users"
+          ],
+          "summary": "Create a new user",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/users/{id}": {
+        "get": {
+          "tags": [
+            "users"
+          ],
+          "summary": "Get a user by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "users"
+          ],
+          "summary": "Update a user by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "users"
+          ],
+          "summary": "Delete a user by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Successful response"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Film": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string"
+            },
+            "field": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "director": {
+                  "type": "string"
+                },
+                "producer": {
+                  "type": "string"
+                },
+                "opening_crawl": {
+                  "type": "string"
+                },
+                "release_date": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "episode_id": {
+                  "type": "integer"
+                },
+                "starships": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                "vehicles": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                "planets": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                "characters": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                "species": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                "created": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "edited": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            },
+            "model": {
+              "type": "string"
+            },
+            "pk": {
+              "type": "integer"
+            }
+          }
+        },
+        "FilmInput": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "director": {
+              "type": "string"
+            },
+            "producer": {
+              "type": "string"
+            },
+            "opening_crawl": {
+              "type": "string"
+            },
+            "release_date": {
+              "type": "string",
+              "format": "date"
+            },
+            "episode_id": {
+              "type": "integer"
+            },
+            "starships": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "vehicles": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "planets": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "characters": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "species": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "created": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "edited": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "title",
+            "director",
+            "producer",
+            "opening_crawl",
+            "release_date",
+            "episode_id",
+            "starships",
+            "vehicles",
+            "planets",
+            "characters",
+            "species",
+            "created",
+            "edited"
+          ]
+        },
+        "People": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string"
+            },
+            "field": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "height": {
+                  "type": "integer"
+                },
+                "mass": {
+                  "type": "integer"
+                },
+                "hair_color": {
+                  "type": "string"
+                },
+                "skin_color": {
+                  "type": "string"
+                },
+                "eye_color": {
+                  "type": "string"
+                },
+                "birth_year": {
+                  "type": "string"
+                },
+                "gender": {
+                  "type": "string"
+                },
+                "homeworld": {
+                  "type": "integer"
+                },
+                "created": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "edited": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            },
+            "model": {
+              "type": "string"
+            },
+            "pk": {
+              "type": "integer"
+            }
+          }
+        },
+        "PeopleInput": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "height": {
+              "type": "integer"
+            },
+            "mass": {
+              "type": "integer"
+            },
+            "hair_color": {
+              "type": "string"
+            },
+            "skin_color": {
+              "type": "string"
+            },
+            "eye_color": {
+              "type": "string"
+            },
+            "birth_year": {
+              "type": "string"
+            },
+            "gender": {
+              "type": "string"
+            },
+            "homeworld": {
+              "type": "integer"
+            },
+            "created": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "edited": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "name",
+            "height",
+            "mass",
+            "hair_color",
+            "skin_color",
+            "eye_color",
+            "birth_year",
+            "gender",
+            "homeworld",
+            "created",
+            "edited"
+          ]
+        },
+        "Planet": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string"
+            },
+            "field": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "rotation_period": {
+                  "type": "string"
+                },
+                "orbital_period": {
+                  "type": "string"
+                },
+                "diameter": {
+                  "type": "string"
+                },
+                "climate": {
+                  "type": "string"
+                },
+                "gravity": {
+                  "type": "string"
+                },
+                "terrain": {
+                  "type": "string"
+                },
+                "surface_water": {
+                  "type": "string"
+                },
+                "population": {
+                  "type": "string"
+                },
+                "created": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "edited": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            },
+            "model": {
+              "type": "string"
+            },
+            "pk": {
+              "type": "integer"
+            }
+          }
+        },
+        "PlanetInput": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "rotation_period": {
+              "type": "string"
+            },
+            "orbital_period": {
+              "type": "string"
+            },
+            "diameter": {
+              "type": "string"
+            },
+            "climate": {
+              "type": "string"
+            },
+            "gravity": {
+              "type": "string"
+            },
+            "terrain": {
+              "type": "string"
+            },
+            "surface_water": {
+              "type": "string"
+            },
+            "population": {
+              "type": "string"
+            },
+            "created": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "edited": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "name",
+            "rotation_period",
+            "orbital_period",
+            "diameter",
+            "climate",
+            "gravity",
+            "terrain",
+            "surface_water",
+            "population",
+            "created",
+            "edited"
+          ]
+        },
+        "Species": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string"
+            },
+            "field": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "classification": {
+                  "type": "string"
+                },
+                "eye_colors": {
+                  "type": "string"
+                },
+                "skin_colors": {
+                  "type": "string"
+                },
+                "language": {
+                  "type": "string"
+                },
+                "hair_colors": {
+                  "type": "string"
+                },
+                "average_lifespan": {
+                  "type": "string"
+                },
+                "average_height": {
+                  "type": "string"
+                },
+                "homeworld": {
+                  "type": "integer"
+                },
+                "people": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                "created": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "edited": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            },
+            "model": {
+              "type": "string"
+            },
+            "pk": {
+              "type": "integer"
+            }
+          }
+        },
+        "SpeciesInput": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "classification": {
+              "type": "string"
+            },
+            "eye_colors": {
+              "type": "string"
+            },
+            "skin_colors": {
+              "type": "string"
+            },
+            "language": {
+              "type": "string"
+            },
+            "hair_colors": {
+              "type": "string"
+            },
+            "average_lifespan": {
+              "type": "string"
+            },
+            "average_height": {
+              "type": "string"
+            },
+            "homeworld": {
+              "type": "integer"
+            },
+            "people": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "created": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "edited": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "name",
+            "classification",
+            "eye_colors",
+            "skin_colors",
+            "language",
+            "hair_colors",
+            "average_lifespan",
+            "average_height",
+            "homeworld",
+            "people",
+            "created",
+            "edited"
+          ]
+        },
+        "Starship": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string"
+            },
+            "field": {
+              "type": "object",
+              "properties": {
+                "MGLT": {
+                  "type": "string"
+                },
+                "starship_class": {
+                  "type": "string"
+                },
+                "hyperdrive_rating": {
+                  "type": "string"
+                },
+                "pilots": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                "created": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "edited": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            },
+            "model": {
+              "type": "string"
+            },
+            "pk": {
+              "type": "integer"
+            }
+          }
+        },
+        "StarshipInput": {
+          "type": "object",
+          "properties": {
+            "MGLT": {
+              "type": "string"
+            },
+            "starship_class": {
+              "type": "string"
+            },
+            "hyperdrive_rating": {
+              "type": "string"
+            },
+            "pilots": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            }
+          },
+          "required": [
+            "MGLT",
+            "starship_class",
+            "hyperdrive_rating",
+            "pilots"
+          ]
+        },
+        "Transport": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string"
+            },
+            "field": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "cargo_capacity": {
+                  "type": "string"
+                },
+                "consumables": {
+                  "type": "string"
+                },
+                "passengers": {
+                  "type": "string"
+                },
+                "max_atmosphering_speed": {
+                  "type": "string"
+                },
+                "crew": {
+                  "type": "string"
+                },
+                "length": {
+                  "type": "string"
+                },
+                "model": {
+                  "type": "string"
+                },
+                "cost_in_credits": {
+                  "type": "string"
+                },
+                "manufacturer": {
+                  "type": "string"
+                },
+                "created": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "edited": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            },
+            "model": {
+              "type": "string"
+            },
+            "pk": {
+              "type": "integer"
+            }
+          }
+        },
+        "TransportInput": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "cargo_capacity": {
+              "type": "string"
+            },
+            "consumables": {
+              "type": "string"
+            },
+            "passengers": {
+              "type": "string"
+            },
+            "max_atmosphering_speed": {
+              "type": "string"
+            },
+            "crew": {
+              "type": "string"
+            },
+            "length": {
+              "type": "string"
+            },
+            "model": {
+              "type": "string"
+            },
+            "cost_in_credits": {
+              "type": "string"
+            },
+            "manufacturer": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "cargo_capacity",
+            "consumables",
+            "passengers",
+            "max_atmosphering_speed",
+            "crew",
+            "length",
+            "model",
+            "cost_in_credits",
+            "manufacturer"
+          ]
+        },
+        "Vehicle": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string"
+            },
+            "field": {
+              "type": "object",
+              "properties": {
+                "vehicle_class": {
+                  "type": "string"
+                },
+                "pilots": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                "created": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "edited": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            },
+            "model": {
+              "type": "string"
+            },
+            "pk": {
+              "type": "integer"
+            }
+          }
+        },
+        "VehicleInput": {
+          "type": "object",
+          "properties": {
+            "vehicle_class": {
+              "type": "string"
+            },
+            "pilots": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            }
+          },
+          "required": [
+            "vehicle_class",
+            "pilots"
+          ]
+        },
+        "User": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            }
+          }
+        },
+        "UserInput": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "email",
+            "password"
+          ]
+        }
+      }
+    }
+  }
